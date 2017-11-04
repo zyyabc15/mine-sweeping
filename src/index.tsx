@@ -1,8 +1,8 @@
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
-import { Hello } from './components/Hello'
+import { Content } from './components/Content'
 
 ReactDOM.render(
-    <Hello compiler="TypeScript" framework="React1" />,
+    <Content compiler="TypeScript" framework="React1" />,
     document.getElementById('root')
 )

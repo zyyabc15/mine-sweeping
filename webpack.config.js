@@ -14,7 +14,7 @@ module.exports = {
         hot: true
     },
     // Enable sourcemaps for debugging webpack's output.
-    devtool: "eval-source-map",
+    devtool: "source-map",
 
     resolve: {
         // Add '.ts' and '.tsx' as resolvable extensions.
@@ -71,7 +71,7 @@ module.exports = {
         }),
         new webpack.HotModuleReplacementPlugin(),
         new webpack.optimize.OccurrenceOrderPlugin(),//为组件分配ID，通过这个插件webpack可以分析和优先考虑使用最多的模块，并为它们分配最小的ID？？？？
-        new webpack.optimize.UglifyJsPlugin()//压缩js文件
+        //new webpack.optimize.UglifyJsPlugin()//压缩js文件
         //new ExtractTextPlugin("style.css")
     ]
 

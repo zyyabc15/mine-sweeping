@@ -11,15 +11,15 @@ export default class MineInfo implements IMine {
 
     @action
     getMineMap(x_length: number, y_length: number, bombNum: number) {
-        return this.bombMap
+        return new MineInfo
     }
     @action
     init(point: IPoint, mine: IMine) {
-        return this.bombMap
+        return new MineInfo
     }
     @action
     clickPoint(point: IPoint, mine: IMine) {
-        return this.bombMap
+        return new MineInfo
     }
 
 }
