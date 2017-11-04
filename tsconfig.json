@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+        "experimentalDecorators": true,
+        "outDir": "./build/",
+        "sourceMap": true,
+        "noImplicitAny": true,
+        "module": "commonjs",
+        "target": "ES5",
+        "jsx": "react",
+        "allowJs": true
+    },
+    "exclude": [
+        "node_modules",
+        "public",
+        "build",
+        "webpack",
+        "jest"
+    ]
+}
