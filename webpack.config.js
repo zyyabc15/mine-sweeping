@@ -2,6 +2,7 @@ var webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 module.exports = {
+    //entry: ["babel-polyfill", __dirname + "/src/index.tsx"],
     entry: __dirname + "/src/index.tsx",
     output: {
         filename: "bundle.js",
@@ -18,18 +19,18 @@ module.exports = {
 
     resolve: {
         // Add '.ts' and '.tsx' as resolvable extensions.
-        extensions: [".ts", ".tsx", ".js", ".json"]
+        extensions: [".ts", ".tsx", ".js", ".json", ".jsx",]
     },
 
     module: {
         rules: [
             {
-                test: /(\.ts|\.tsx)$/,
+                test: /\.(ts|tsx)$/,
                 enforce: 'pre',
                 loader: 'tslint-loader',
             },
             {
-                test: /(\.tsx|\.js)$/,
+                test: /\.(ts|tsx)$/,
                 use: {
                     loader: "babel-loader"
                 },
@@ -44,23 +45,17 @@ module.exports = {
             // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
             {
                 enforce: "pre",
-                test: /(\.js|\.tsx)$/,
+                test: /\.js$/,
                 loader: "source-map-loader"
             },
             {
                 test: /\.css$/,
                 //同时引用两个loader
-                use: [
-                    {
-                        loader: "style-loader"
-                    }, {
-                        loader: "css-loader",
-                        options: {
-                            //模块化
-                            modules: true
-                        }
-                    }
-                ]
+                use: ["style-loader", "css-loader"]
+            },
+            {
+                test: /\.(png|jpg)$/,
+                loader: 'url-loader'
             }
         ]
     },

@@ -1,14 +1,18 @@
-import React, { Component } from 'react'
+import * as React from 'react'
 import Header from './Header'
-export interface HelloProps {
-    compiler: string
-    framework: string
-}
+import Mine from './Mine'
+import { observer } from 'mobx-react'
+import store from '../../store/MineInfo'
 
-// 'HelloProps' describes the shape of props.
-// State is never set so we use the 'undefined' type.
-export class Content extends Component<HelloProps, undefined> {
+@observer
+export class Content extends React.Component<undefined, undefined> {
     public render() {
-        return <h1>Hello from2 {this.props.compiler} and {this.props.framework}!</h1>
+        return (
+            <div className="content">
+                <Header initBombNum={store.showedBombNum} over={store.over} chooseLevel={store.chooseLevel}
+                    time={store.time}  stopTimer={store.stopTimer} />
+                <Mine />
+            </div>
+        )
     }
 }
