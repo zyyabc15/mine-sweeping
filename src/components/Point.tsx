@@ -64,7 +64,7 @@ class Point extends React.Component<IPoint> {
                 onDoubleClick={this.doubleClick}
                 onMouseDown={this.click} >
                 {flag || show && value !== 0 &&
-                    <a className={'value-color-' + value}>{value}</a>}
+                    <a className={'value-color-' + value}>{value > 0 && value}</a>}
             </div>
         )
     }
