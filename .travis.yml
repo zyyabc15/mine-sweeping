@@ -8,7 +8,6 @@ cache:
 install:
   - yarn
 script:
-  - yarn run ci
+  - yarn run server
 after_script:
-  - yarn run codecov
-  - yarn run deploy 
+  - yarn run build 
