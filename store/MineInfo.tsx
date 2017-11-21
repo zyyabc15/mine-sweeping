@@ -6,16 +6,31 @@ class MineInfo implements IMine {
     @observable bombMap: PointInfo[][]
     @observable over: boolean = false
     @observable time: number = 0
+    @observable showedBombNum: number = 10
+    @observable bestScore: number
+    @observable level = 1
     x_length: number = 9
     y_length: number = 9
     bombNum: number = 10
-    showedBombNum: number = 10
     firstClick: boolean = true
     leftPointNum: number = this.getLeftPoint
+    success: boolean = false
+    newScore: boolean = false
     _timer: any
 
     @computed get getLeftPoint() {
         return this.x_length * this.y_length - this.bombNum
+    }
+    constructor() {
+        this.getBestScore()
+    }
+    getBestScore = () => {
+        const bestScore = localStorage.getItem('mine_' + this.level)
+        if (bestScore) {
+            this.bestScore = parseInt(bestScore, 0)
+        } else {
+            this.bestScore = 0
+        }
     }
     @action
     getMineMap() {
@@ -90,13 +105,16 @@ class MineInfo implements IMine {
                 })
             }
         }
-        console.log(this.leftPointNum)
         if (this.leftPointNum === 0) {
             this.over = true
             this.stopTimer()
-            alert('sucessful')
-
+            this.success = true
+            if (this.bestScore === 0 || this.bestScore > this.time) {
+                localStorage.setItem('mine_' + this.level, JSON.stringify(this.time))
+                this.newScore = true
+            }
         }
+
     }
     @action
     clickRightButton(x: number, y: number) {
@@ -135,6 +153,9 @@ class MineInfo implements IMine {
         this.getMineMap()
 
     }
+    newGame = (): void => {
+        this.chooseLevel(this.level)
+    }
     showPoint = (x: number, y: number) => {
         if (this.bombMap[y][x].show) {
             return
@@ -143,26 +164,33 @@ class MineInfo implements IMine {
         this.leftPointNum = this.leftPointNum - 1
     }
     chooseLevelInit = (level: number): void => {
+
         if (level === 1) {
             this.bombNum = 10
             this.showedBombNum = 10
             this.x_length = 9
             this.y_length = 9
+            this.level = 1
         } else if (level === 2) {
             this.bombNum = 40
             this.showedBombNum = 40
             this.x_length = 16
             this.y_length = 16
+            this.level = 2
         } else if (level === 3) {
             this.bombNum = 99
             this.showedBombNum = 99
             this.x_length = 30
             this.y_length = 16
+            this.level = 3
         }
         this.over = false
         this.time = 0
         this.firstClick = true
         this.leftPointNum = this.getLeftPoint
+        this.success = false
+        this.newScore = false
+        this.getBestScore()
     }
     getRandom = (length: number): number => {
         return Math.floor(Math.random() * length)

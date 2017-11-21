@@ -8,6 +8,8 @@ export interface IMine {
     over: boolean,
     time: number,
     leftPointNum: number,
+    level: number,
+    bestScore: number
 
     getMineMap(): void,
     init(x: number, y: number): void,

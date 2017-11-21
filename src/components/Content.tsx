@@ -9,8 +9,10 @@ export class Content extends React.Component<undefined, undefined> {
     public render() {
         return (
             <div className="content">
-                <Header initBombNum={store.showedBombNum} over={store.over} chooseLevel={store.chooseLevel}
-                    time={store.time}  stopTimer={store.stopTimer} />
+                <Header initBombNum={store.showedBombNum} over={store.over}
+                    chooseLevel={store.chooseLevel}
+                    time={store.time} stopTimer={store.stopTimer}
+                    bestScore={store.bestScore} />
                 <Mine />
             </div>
         )

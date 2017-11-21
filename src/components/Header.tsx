@@ -7,6 +7,7 @@ interface HeaderProps {
     chooseLevel: any
     time: number
     stopTimer: any
+    bestScore: number
 }
 @observer
 class Header extends React.Component<HeaderProps> {
@@ -17,24 +18,31 @@ class Header extends React.Component<HeaderProps> {
         this.props.stopTimer()
     }
     render() {
+        console.log(this.props.bestScore)
         return (
-            <div className = "header-content">
-                <div className="level-div">
-                    <a onClick={this.chooseLevel.bind(this, 1)}>初级</a>
-                    <a onClick={this.chooseLevel.bind(this, 2)}>中级</a>
-                    <a onClick={this.chooseLevel.bind(this, 3)}>高级</a>
-                </div>
+            <div className="header-content">
                 <div className="dataBox">
-                    <div>
-                        <label>计时：</label>
-                        <label>{this.props.time}</label>
+                    <div className="time-container">
+                        <div className="mine-pic" />
+                        <div className="time-str"><label>{this.props.initBombNum}</label></div>
                     </div>
-                    <div>
-                        <label>个数：</label>
-                        <label>{this.props.initBombNum}</label>
+                    <div className="time-container">
+                        <div className="time-pic" />
+                        <div className="time-str"><label>{this.props.time}</label></div>
                     </div>
+                    <div className="time-container">
+                        <div className="best-pic" />
+                        <div className="time-str"><label>{this.props.bestScore}</label></div>
+                    </div>
+
                 </div>
-                {this.props.over && <div>failed</div>}
+                <div className="level-div">
+                    <div onClick={this.chooseLevel.bind(this, 1)} className="level-div-1" />
+                    <div onClick={this.chooseLevel.bind(this, 2)} className="level-div-2" />
+                    <div onClick={this.chooseLevel.bind(this, 3)} className="level-div-3" />
+                </div>
+
+               
             </div>
         )
     }
