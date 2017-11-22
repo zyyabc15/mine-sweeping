@@ -7,7 +7,6 @@
     "clean": "rm -rf build/*",
     "build_dev": "webpack --config webpack.config.js",
     "build_prod": "webpack --config webpack.prod.config.js",
-    "start_prod": "cross-env NODE_ENV=development node src/index.tsx",
     "start_dev": "webpack-dev-server --port 3001 --open",
     "deploy": "gh-pages-with-token -d build"
   },
@@ -27,7 +26,6 @@
     "cross-env": "^5.1.1",
     "css-loader": "^0.28.7",
     "extract-text-webpack-plugin": "^3.0.2",
-    "gh-pages": "^1.1.0",
     "gh-pages-with-token": "^1.0.0",
     "html-webpack-plugin": "^2.30.1",
     "mobx": "^3.3.1",
