@@ -8,14 +8,14 @@ module.exports = {
         filename: "bundle.js",
         path: __dirname + "/build"
     },
-    devServer: {
-        contentBase: __dirname,//
-        historyApiFallback: true,//不跳转
-        inline: true,//实时刷新
-        hot: true
-    },
+    // devServer: {
+    //     contentBase: __dirname,//
+    //     historyApiFallback: true,//不跳转
+    //     inline: true,//实时刷新
+    //     hot: true
+    // },
     // Enable sourcemaps for debugging webpack's output.
-    devtool: "source-map",
+    // devtool: "source-map",
 
     resolve: {
         // Add '.ts' and '.tsx' as resolvable extensions.
@@ -66,8 +66,8 @@ module.exports = {
         }),
         new webpack.HotModuleReplacementPlugin(),
         new webpack.optimize.OccurrenceOrderPlugin(),//为组件分配ID，通过这个插件webpack可以分析和优先考虑使用最多的模块，并为它们分配最小的ID？？？？
-        //new webpack.optimize.UglifyJsPlugin()//压缩js文件
-        //new ExtractTextPlugin("style.css")
+        new webpack.optimize.UglifyJsPlugin(),//压缩js文件
+        new ExtractTextPlugin("style.css")
     ]
 
     // When importing a module whose path matches one of the following, just

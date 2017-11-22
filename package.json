@@ -4,8 +4,11 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "build": "webpack",
-    "server": "webpack-dev-server --port 3001 --open"
+    "clean":"rm -rf build/*",
+    "build_dev": "webpack --config webpack.dev.config.js",
+    "build_prod": "webpack --config webpack.prod.config.js",
+    "start_prod":"cross-env NODE_ENV=development node src/index.tsx",
+    "start_dev": "webpack-dev-server --port 3001 --open"
   },
   "dependencies": {
     "@types/qs": "^6.5.1",
