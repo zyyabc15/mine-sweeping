@@ -18,7 +18,6 @@ class Header extends React.Component<HeaderProps> {
         this.props.stopTimer()
     }
     render() {
-        console.log(this.props.bestScore)
         return (
             <div className="header-content">
                 <div className="dataBox">
@@ -42,7 +41,6 @@ class Header extends React.Component<HeaderProps> {
                     <div onClick={this.chooseLevel.bind(this, 3)} className="level-div-3" />
                 </div>
 
-               
             </div>
         )
     }

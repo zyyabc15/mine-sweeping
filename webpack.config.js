@@ -66,8 +66,8 @@ module.exports = {
         }),
         new webpack.HotModuleReplacementPlugin(),
         new webpack.optimize.OccurrenceOrderPlugin(),//为组件分配ID，通过这个插件webpack可以分析和优先考虑使用最多的模块，并为它们分配最小的ID？？？？
-        new webpack.optimize.UglifyJsPlugin(),//压缩js文件
-        new ExtractTextPlugin("style.css")
+        //new webpack.optimize.UglifyJsPlugin(),//压缩js文件
+        //new ExtractTextPlugin("style.css")
     ]
 
     // When importing a module whose path matches one of the following, just
