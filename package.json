@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "clean": "rm -rf build/*",
+    "clean": "rm -rf build/* node_modules",
     "build_dev": "webpack --config webpack.config.js",
     "build_prod": "webpack --config webpack.prod.config.js",
     "start_dev": "webpack-dev-server --port 3001 --open",
